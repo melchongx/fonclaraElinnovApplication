@@ -1,0 +1,14 @@
+Developed by Melfred Fonclara.
+
+This project is built with Flask, a Python web framework, and TailwindCSS, a CSS framework
+that will accept a number as an input and the system will
+- get if the number is a prime number
+- get the factorial of the number
+
+In partial fulfillment of the application for the role of Software Engineer Intern at Elinnov Technologies, Inc.
+
+- - - HOW TO RUN - - -
+- open terminal
+- go to the directory of the project
+- execeute command 'python app.py'
+- open browser and enter the address 'localhost:5000'
