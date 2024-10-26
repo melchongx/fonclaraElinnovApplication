@@ -1,8 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for
 import time, math
 from multiprocessing import Pool
+import sys
+
+sys.set_int_max_str_digits(0)
 
 app = Flask(__name__)
+
+# encountered an error (ValueError: Exceeds the limit (4300 digits) for integer string conversion;)
+# disables the limit for int to string conversion
 
 #render the page
 @app.route('/')
@@ -11,7 +17,7 @@ def home():
     prime_time = request.args.get('prime_time', type=str, default=None)
     prime = request.args.get('prime', type=str, default=None)
     factorial_time = request.args.get('factorial_time', type=str, default=None)
-    factorial = request.args.get('factorial', type=int, default=None)
+    factorial = request.args.get('factorial', type=str, default=None)
 
     return render_template('index.html',
                            number= number, 
@@ -118,6 +124,13 @@ def submit():
     factorial_execution_time = factorial_end_time - factorial_start_time
     formatted_factorial_time = f"{factorial_execution_time:.6f}"
     
+    # convert the factorial to a string and truncate it if it exceeds 1000 digits (rendering issue)
+    factorial_str = str(factorial)
+    if len(factorial_str) > 1000:
+        truncated_factorial = factorial_str[:1000] + "..."
+    else:
+        truncated_factorial = factorial_str
+    
     print(f"PRIME TIME: {prime_execution_time:.6f} seconds")
     print(f"PRIME: {prime}")
     print(f"FACTORIAL TIME: {factorial_execution_time:.6f} seconds")
@@ -127,7 +140,7 @@ def submit():
                             prime_time=formatted_prime_time, 
                             prime=prime, 
                             factorial_time=formatted_factorial_time, 
-                            factorial=factorial))
+                            factorial=truncated_factorial))
     
 
 if __name__ == '__main__':
