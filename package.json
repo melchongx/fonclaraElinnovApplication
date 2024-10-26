@@ -1,0 +1,16 @@
+{
+  "name": "elinnov",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tailwindcss -i ./static/style.css -o ./static/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "elinnov": "file:",
+    "tailwindcss": "^3.4.14"
+  }
+}

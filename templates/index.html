@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elinnov Application</title>
+    <link
+      href="{{ url_for('static', filename='output.css') }}"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="h-screen w-full bg-gray-300 flex justify-center items-center">
+    <div class="font-mono w-3/4 py-5 px-10 bg-white rounded-lg shadow-xl">
+      <h1 class="font-medium text-5xl underline underline-offset-8 text-center">
+        enter a number.
+      </h1>
+      <!--form for submitting the number used to check if it is a prime and get the factorial of-->
+      <form
+        action="/submit"
+        method="POST"
+        class="w-full flex place-content-around space-x-5 my-10"
+      >
+        <input
+          class="border-gray-400 border rounded-md w-full px-3 shadow-md"
+          type="number"
+          name="number"
+          required
+        />
+        <button
+          class="bg-gray-200 border-gray-300 border rounded-md px-5 py-1 font-medium shadow-md"
+          type="submit"
+        >
+          Submit.
+        </button>
+      </form>
+      <div class="flex flex-col">
+        {% if number is not none %}
+        <span class="inline-flex"
+          ><p class="w-1/4">is {{ number }} a prime number?</p>
+          <p class="font-bold w-3/4">{{prime}}.</p></span
+        >
+        <span class="inline-flex"
+          ><p class="w-1/4">Execution Time:</p>
+          <p class="font-bold w-3/4">{{prime_time}} seconds</p></span
+        >
+        <span class="inline-flex mt-5"
+          ><p class="w-1/4">the factorial of {{ number }}?</p>
+          <p class="font-bold w-3/4 break-words">{{factorial}}</p></span
+        >
+        <span class="inline-flex"
+          ><p class="w-1/4">Execution Time:</p>
+          <p class="font-bold w-3/4">{{factorial_time}} seconds</p></span
+        >
+        {% else %}
+        <p>Enter a number to know if it is a prime and its factorial.</p>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>
