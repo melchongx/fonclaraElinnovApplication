@@ -10,5 +10,5 @@ In partial fulfillment of the application for the role of Software Engineer Inte
 - - - HOW TO RUN - - -
 - open terminal
 - go to the directory of the project
-- execeute command 'python app.py'
+- execute command 'python app.py'
 - open browser and enter the address 'localhost:5000'
